@@ -39,7 +39,6 @@
                 int count = 0;
                 boolean lastq = false;
             %>
-            ${questionsList}
             <c:if test="${questionsList ne null}">
                 <c:forEach items="${questionsList}" var="question">
 
@@ -48,9 +47,8 @@
                         <% lastq = true;%>
                     </c:if>
                     <c:if test="${question.getQue_type() eq 'Written' or question.getQue_type() eq 'Practical'}">
-                        <p>${question}</p>
                         <div class="well well-sm">
-                            <t:url var="answer" value="../quesAnswerSubmit/${studentId}" />
+                            <t:url var="answer" value="../quesAnswerSubmit" />
                             <form action="${answer}" method="POST">
                                 <h2>Question type: ${question.que_type}</h2>
                                 <h3>(<%=count%>) : ${question.que_text} <span class="badge badge-success">for ${question.que_marks} marks</span> </h3>
@@ -66,11 +64,9 @@
                         </div>
                     </c:if>
                     <c:if test="${question.getQue_type() eq 'Optional'}">
-                        <p>${question}</p>
                         <br><br>
-                        <p><%= count%><%= lastq = true%></p>
                         <div class="well well-sm">
-                            <t:url var="answer" value="../quesAnswerSubmit/${studentId}" />
+                            <t:url var="answer" value="./quesAnswerSubmit" />
                             <form action="${answer}" method="POST">
 
                                 <h2>Question type: ${question.que_type}</h2>
@@ -86,7 +82,7 @@
                                     <ul class="list-group"> 
                                         <li class="list-group-item"><input type="radio" value="${options.option1}" name="answer_Text"> ${options.option1}</li>
                                         <li class="list-group-item"><input type="radio" value="${options.option2}" name="answer_Text"> ${options.option2}</li>
-                                        <li class="list-group-item"><input type="radio" value="${options.option3}" name="answer_Text">">< ${options.option3}</li>
+                                        <li class="list-group-item"><input type="radio" value="${options.option3}" name="answer_Text"> ${options.option3}</li>
                                         <li class="list-group-item"><input type="radio" value="${options.option4}" name="answer_Text"> ${options.option4}</li>
                                     </ul> 
 
@@ -103,9 +99,12 @@
                 </c:forEach>
             </c:if>
             <c:if test="${ empty questionsList}">
+                <c:if test="${param.act eq 'lo'}">
+                            <p style="color:green;">This subject  have no any Question/Answer!.</p>
+                </c:if>
                 <c:out value="${'Look like  you have already given the exam or No questions are their for subject id  1'}" escapeXml="false" />
                 <br>
-                check your previous result for  ${subject.sub_name} <a href="../showResultUser/${sessionScope.id}/${subject.sub_id}">Get Result</a>
+                check your previous result for  ${subject.sub_name} <a href="./showResultUser/${sessionScope.id}/${subject.sub_id}">Get Result</a>
             </c:if>
         </div>
 

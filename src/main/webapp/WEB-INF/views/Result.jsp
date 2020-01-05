@@ -35,7 +35,6 @@
                 <div class="col-sm-1" style="margin-top: 0px!important; text-align: center">
                     <img src="" height="100" width="100" alt="" />
                     <br>
-                    ${student.name}
                 </div>
                 <div class="col-sm-3">
                     <div class="row">
@@ -70,8 +69,12 @@
                     int attemptQuestions = answerLis.size();
                     int totalrightanswer = answerDaoImp.WrongOrRight("Right", studen, subjec).size();
                     int totalwronganswer = answerDaoImp.WrongOrRight("Wrong", studen, subjec).size();
-                    System.out.println("attemptQuestions =======" + totalwronganswer);
-
+                    
+                    System.out.println("totalalquestions =======" + totalalquestions);
+                    System.out.println("attemptQuestions =======" + attemptQuestions);
+                    System.out.println("totalrightanswer =======" + totalrightanswer);
+                    System.out.println("totalwronganswer =======" + totalwronganswer);
+                    
                     double totalmarkofsubject = questionsDaoImp.SumOfMarks(subjec);
                     double tatalmarkofstudent = 0.0;
                     ListIterator lit = answerLis.listIterator();
@@ -109,8 +112,24 @@
                     <div class="row">
                         <div class="col-sm-12" style="color: #990000; font-weight: bold;"> You are :<%=((totalRighAnswerMarks * 100) / questionsDaoImp.SumOfMarks(subjec)) < 40 ? "Failed" : "Passed"%></div>
                     </div>
+                    <div class="row">
+                        <div class="col-sm-12" style="color: #990000; font-weight: bold;"> You got : <%=((totalRighAnswerMarks * 100) / questionsDaoImp.SumOfMarks(subjec)) < 40 ? ((totalRighAnswerMarks * 100) / questionsDaoImp.SumOfMarks(subjec))+"%"+" requires 40% minimum" : "Passed"%></div>
+                    </div>
                 </div>
-
+                    
+                    
+                    
+                    <div class="col-sm-2">
+                        <div class="row">
+                            <div class="col-sm-12"><a href="#">Check your grade card</a> </div>
+                    </div>
+                        <div class="row">
+                        <div class="col-sm-12">....................... </div>
+                    </div>
+                        <div class="row">
+                        <div class="col-sm-12">Request for certificate</div>
+                    </div>
+                    </div>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="progress">
@@ -124,9 +143,7 @@
 
 
             </div>
-            ${answerList}
             <c:forEach items="${answerList}" var="answer" >
-                <c:out value="${answer}"></c:out>
                 <% qno++;%>
                 <div class="row" style="margin-bottom: 10px; box-shadow: 1px 1px 5px black;">
                     <div class="col-sm-2">

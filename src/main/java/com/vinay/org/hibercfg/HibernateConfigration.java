@@ -32,9 +32,9 @@ public class HibernateConfigration {
                 Configuration cfg = new Configuration();
                 Properties setting = new Properties();
                 setting.put(Environment.DRIVER, "com.mysql.jdbc.Driver");
-                setting.put(Environment.URL, "jdbc:mysql://node29607-exammanagement.cloudjiffy.net/exammanagement");
+                setting.put(Environment.URL, "jdbc:mysql://localhost:3306/exammanagement");
                 setting.put(Environment.USER, "root");
-                setting.put(Environment.PASS, "VBRoyk14338");
+                setting.put(Environment.PASS, "mysql");
                 setting.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
                 setting.put(Environment.HBM2DDL_AUTO, "update");
                 setting.put(Environment.SHOW_SQL, "true");

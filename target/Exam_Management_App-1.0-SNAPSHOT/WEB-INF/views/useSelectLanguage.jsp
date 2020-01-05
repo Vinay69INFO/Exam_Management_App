@@ -22,7 +22,7 @@
         <div class="row center-form">
         <div class="col-sm-6">
             
-                <tag:url var="ExamPhase2" value="/studentExamPhase2/${student.id}" />
+                <tag:url var="ExamPhase2" value="/studentExamPhase2" />
                 <form class="form-controller1" action="${ExamPhase2}">
                     <input type="hidden" value="${student.id}" name="studentId">
                     <div class="form-group">

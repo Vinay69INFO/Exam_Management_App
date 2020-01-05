@@ -36,8 +36,7 @@
                             <th>Fees</th>
                             <th>UserName</th>
                             <th>Password</th>
-                            <th>Update</th>
-                            <th>Delete</th>
+                            
                         </tr>     
                     </thead>
                     <tbody>
@@ -58,9 +57,9 @@
                                 <td>${student.fees}</td>                   
                                 <td>${student.username}</td>
                                 <td>${student.password}</td>
-                                <t:url var="update_stu" value="/updateStudent?student=${sessionScope.id}" />
-                                <td><a href="${update_stu}">Update</a></td>
-                                <td><a href="./deleteStudent">Delete</a></td>
+<!--                                <turl var="update_stu" value="/updateStudent?student={sessionScope.id}" />
+                                <td><a href="{update_stu}">Update</a></td>
+                                <td><a href="./deleteStudent">Delete</a></td>-->
                             </tr>
                         </c:forEach>
                     </tbody>

@@ -116,28 +116,32 @@ public class AnswerDaoImp implements AnswerDao {
 
     @Override
     public List<Answer> WrongOrRight(String WrongOrRight, Student student, Subject sub) {
+        String hql="from Answer where wrongOrRight='"+WrongOrRight+"' and student in("+student.getId()+")";
         try (Session session = HibernateConfigration.getSessionFactory().openSession()) {
-            Criteria criteria = session.createCriteria(Answer.class);
-            criteria.add(Restrictions.eq("wrongOrRight", WrongOrRight));
-            criteria.add(Restrictions.and(Restrictions.eq("student", student)));
-            List<Answer> li = criteria.list();
+             Query q=session.createQuery(hql);
+//            Criteria criteria = session.createCriteria(Answer.class);
+//            criteria.add(Restrictions.eq("wrongOrRight", WrongOrRight));
+//            criteria.add(Restrictions.and(Restrictions.eq("subjectId", sub)));
+            List<Answer> li = q.list();
+            System.out.println("list answer====>"+li.size());
             return li;
         }
     }
 
     @Override
     public List<Answer> serchByStudent$language(Student student, Subject sub) {
-        String hql="from Answer where student ="+student+" and subjectId="+sub+"";
-        System.out.println("hql------------------>"+hql);
+        String hql="from Answer where student_id in ("+student.getId()+") and subjectId_sub_id in ("+sub.getSub_id()+")";
+        System.out.println("hql------------------>");
         try (Session session = HibernateConfigration.getSessionFactory().openSession()) {
 //            Criteria criteria=session.createCriteria(Answer.class);
 //            criteria.add(Restrictions.eq("student",student));
 //            criteria.add(Restrictions.and(Restrictions.eq("subjectId",sub)));
-            
+            System.out.println("session 1");
             Query query=session.createQuery(hql);
-            
+            System.out.println("session 2");
            List<Answer> answerList = query.list();
             System.out.println("list==============>"+answerList.size());
+            
             return answerList;
         }
     }

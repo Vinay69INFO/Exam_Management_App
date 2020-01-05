@@ -69,8 +69,12 @@ public class AnswerController {
           m.addAttribute("student", student);
            m.addAttribute("subject",subject);
            m.addAttribute("answerList", answerList);
-        
+        if(answerList.size()>0){
         return "Result";
+       }else{
+            return "redirect:../../studentExamPhase2?subj_id="+subjectId+"&act=lo";
+        }
+        
     }
 }
 
