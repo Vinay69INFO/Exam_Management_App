@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Arvo&display=swap');
+
+@import url('./stuStyle.css');
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+/*:root{
+	--darkTeal: #004d40;
+	--mainWhite:#ffffff;
+	--darkBlue: #000066;
+	--lightTeal:#00897b;
+}*/
+
+body{
+	font-size:1.2rem;
+	font-family: 'Arvo', serif;
+	color: var(-darkBlue);	
+	background-color: #bfbfbf;
+        width: 100%;
+}
+
+.title-h1{
+        border: 1px solid red;
+	font-size:2.5rem;
+	padding:0.7rem;
+        margin-top: 5px;
+        border-radius: 10px;
+        text-align: center;
+        background-color: #37474f; 
+        
+}
+
+.title-h2{
+/*	background-color: var(-lightTeal);*/
+	width:100%!important;
+/*	color: var(-mainWhite);*/
+	padding:.8rem 0rem .5rem 1rem;
+	
+}
